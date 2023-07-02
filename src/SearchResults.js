@@ -1,10 +1,7 @@
 import React from "react";
-import babyNamesData from "./babyNamesData.json";
 
-function SearchResults() {
-  const sortedBabyNames = babyNamesData.sort((a, b) =>
-    a.name.localeCompare(b.name)
-  );
+function SearchResults({ result }) {
+  const sortedBabyNames = result.sort((a, b) => a.name.localeCompare(b.name));
   return (
     <div>
       {sortedBabyNames.map((child, index) => {

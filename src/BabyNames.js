@@ -5,18 +5,23 @@ import SearchResults from "./SearchResults";
 import BabyNamesData from "./babyNamesData.json";
 
 function BabyNames() {
-  const [babyNames, setBabyNames] = useState([]);
-  const [filterBabyNames, setFilterBabyNames] = useState([]);
+  const [filterBabyNames, setFilterBabyNames] = useState(BabyNamesData);
 
-  function anyName() {
-    setBabyNames(BabyNamesData);
-  }
+  // const [order, setOrder] = useState("ASC");
+  // <button
+  //   onClick={() =>
+  //     setOrder((prevState) => (prevState === "ASC" ? "DESC" : "ASC"))
+  //   }
+  // >
+  //   Change order
+  // </button>;
 
   const search = (searchVal) => {
     let result = BabyNamesData.filter((child) => {
       return child.name.toLowerCase().includes(searchVal);
     });
     setFilterBabyNames(result);
+    console.log(searchVal);
     console.log(result);
   };
 
