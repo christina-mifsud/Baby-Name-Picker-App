@@ -1,10 +1,9 @@
 import React from "react";
 
-function SearchResults({ result, move }) {
-  const sortedBabyNames = result.sort((a, b) => a.name.localeCompare(b.name));
+function Favorites({ favorite }) {
   return (
     <div>
-      {sortedBabyNames.map((child, index) => {
+      {favorite.map((child, index) => {
         let isChildMale;
         if (child.sex === "m") {
           isChildMale = true;
@@ -12,7 +11,6 @@ function SearchResults({ result, move }) {
         return (
           <span
             key={index}
-            onClick={() => move(index)}
             className={isChildMale ? "blue" : "pink"}
           >{`${child.name} `}</span>
         );
@@ -21,4 +19,4 @@ function SearchResults({ result, move }) {
   );
 }
 
-export default SearchResults;
+export default Favorites;

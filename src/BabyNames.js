@@ -3,9 +3,11 @@ import "./App.css";
 import Search from "./Search";
 import SearchResults from "./SearchResults";
 import BabyNamesData from "./babyNamesData.json";
+import Favorites from "./Favourites";
 
 function BabyNames() {
   const [filterBabyNames, setFilterBabyNames] = useState(BabyNamesData);
+  const [favorite, setFavorite] = useState([]);
 
   // const [order, setOrder] = useState("ASC");
   // <button
@@ -25,10 +27,21 @@ function BabyNames() {
     console.log(result);
   };
 
+  const move = (index) => {
+    const favName = filterBabyNames[index];
+    setFilterBabyNames((filterBabyNames) => {
+      const originalArrayWithoutFav = [...filterBabyNames];
+      originalArrayWithoutFav.splice(index, 1);
+      return originalArrayWithoutFav;
+    });
+    setFavorite((newEmptyArray) => [...newEmptyArray, favName]);
+  };
+
   return (
     <>
       <Search search={search} />
-      <SearchResults result={filterBabyNames} />
+      <Favorites favorite={favorite} />
+      <SearchResults result={filterBabyNames} move={move} />
     </>
   );
 }
