@@ -1,6 +1,7 @@
 import React from "react";
+import { REMOVE_FROM_FAV } from "./constants/constants";
 
-function Favorites({ favorite }) {
+function Favorites({ favorite, move }) {
   return (
     <div>
       {favorite.map((child, index) => {
@@ -11,6 +12,7 @@ function Favorites({ favorite }) {
         return (
           <span
             key={index}
+            onClick={() => move(child.id, REMOVE_FROM_FAV)}
             className={isChildMale ? "blue" : "pink"}
           >{`${child.name} `}</span>
         );
