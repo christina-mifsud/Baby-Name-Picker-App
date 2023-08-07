@@ -3,7 +3,7 @@ import { REMOVE_FROM_FAV } from "./constants/constants";
 
 function Favorites({ favorite, move }) {
   return (
-    <div>
+    <div className="fav-array">
       {favorite.map((child, index) => {
         let isChildMale;
         if (child.sex === "m") {
